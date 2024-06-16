@@ -2,6 +2,8 @@ table 50100 "Customer View Log"
 {
     Caption = 'Customer View Log';
     DataClassification = ToBeClassified;
+    LookupPageId = "Customer View Log List";
+    DrillDownPageId = "Customer View Log List";
 
     fields
     {
@@ -9,6 +11,7 @@ table 50100 "Customer View Log"
         {
             Caption = 'Entry No.';
             DataClassification = SystemMetadata;
+            AllowInCustomizations = Always;
         }
         field(2; "Customer No."; Code[20])
         {
@@ -26,6 +29,12 @@ table 50100 "Customer View Log"
         key(PK; "Entry No.")
         {
             Clustered = true;
+        }
+        key(CustNo; "Customer No.", SystemCreatedAt)
+        {
+        }
+        key(UserId; "User Id", SystemCreatedAt)
+        {
         }
     }
 
